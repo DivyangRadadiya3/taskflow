@@ -1,0 +1,26 @@
+{
+  "overview": "A feature-rich offline todo app with modern glassmorphism design. Manage tasks with priorities, due dates, categories, subtasks, drag-to-reorder, filters, search, dark/light mode, and full local storage persistence.",
+  "features": [
+    "Create/edit/delete tasks with title, description, priority & due date",
+    "Subtasks with independent completion tracking",
+    "Drag-to-reorder within lists",
+    "Filter by status, priority & category + real-time search",
+    "Dark/light mode with persistence",
+    "Glassmorphism design with smooth animations",
+    "Bulk actions: delete completed, mark all done, export JSON",
+    "Progress bar & task counters",
+    "Keyboard shortcuts (Ctrl+N, Ctrl+K, Ctrl+L)",
+    "Mobile responsive layout",
+    "Full offline local storage persistence"
+  ],
+  "category": "productivity",
+  "tags": [
+    "todo",
+    "offline",
+    "productivity",
+    "task-management",
+    "glassmorphism",
+    "dark-mode"
+  ],
+  "last_updated": "2026-04-24T02:52:12.288Z"
+}

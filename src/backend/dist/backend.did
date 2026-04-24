@@ -1,0 +1,61 @@
+type UserPreferences = record {darkMode: bool;};
+type UpdateTodoInput = 
+ record {
+   category: opt text;
+   completed: bool;
+   description: text;
+   dueDate: opt int;
+   id: nat;
+   priority: Priority;
+   sortOrder: nat;
+   title: text;
+ };
+type Todo = 
+ record {
+   category: opt text;
+   completed: bool;
+   createdAt: int;
+   description: text;
+   dueDate: opt int;
+   id: nat;
+   priority: Priority;
+   sortOrder: nat;
+   subtasks: vec Subtask;
+   title: text;
+ };
+type Subtask = 
+ record {
+   completed: bool;
+   id: nat;
+   title: text;
+ };
+type Priority = 
+ variant {
+   high;
+   low;
+   medium;
+ };
+type CreateTodoInput = 
+ record {
+   category: opt text;
+   description: text;
+   dueDate: opt int;
+   priority: Priority;
+   sortOrder: nat;
+   title: text;
+ };
+service : {
+  addSubtask: (todoId: nat, title: text) -> (bool);
+  createTodo: (input: CreateTodoInput) -> (Todo);
+  deleteAllCompleted: () -> (nat);
+  deleteSubtask: (todoId: nat, subtaskId: nat) -> (bool);
+  deleteTodo: (id: nat) -> (bool);
+  getCategories: () -> (vec text) query;
+  getPreferences: () -> (UserPreferences) query;
+  getTodos: () -> (vec Todo) query;
+  markAllCompleted: () -> ();
+  reorderTodo: (id: nat, sortOrder: nat) -> (bool);
+  setDarkMode: (enabled: bool) -> ();
+  toggleSubtask: (todoId: nat, subtaskId: nat) -> (bool);
+  updateTodo: (input: UpdateTodoInput) -> (bool);
+}

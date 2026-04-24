@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Bricolage Grotesque", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.75rem;
+
+    --background: 0.98 0.01 270;
+    --foreground: 0.25 0.04 260;
+    --card: 0.96 0.02 270;
+    --card-foreground: 0.2 0.03 260;
+    --popover: 0.95 0.02 270;
+    --popover-foreground: 0.2 0.03 260;
+
+    --primary: 0.45 0.15 260;
+    --primary-foreground: 0.95 0.01 270;
+
+    --secondary: 0.92 0.02 270;
+    --secondary-foreground: 0.35 0.08 260;
+    --muted: 0.88 0.02 270;
+    --muted-foreground: 0.55 0.03 260;
+
+    --accent: 0.62 0.21 180;
+    --accent-foreground: 0.98 0.01 270;
+
+    --destructive: 0.58 0.18 25;
+    --destructive-foreground: 0.98 0.01 270;
+
+    --border: 0.92 0.02 270;
+    --input: 0.92 0.02 270;
+    --ring: 0.62 0.21 180;
+
+    --chart-1: 0.65 0.22 180;
+    --chart-2: 0.58 0.18 25;
+    --chart-3: 0.68 0.18 122;
+    --chart-4: 0.45 0.15 260;
+    --chart-5: 0.72 0.18 50;
+
+    --sidebar: 0.96 0.02 270;
+    --sidebar-foreground: 0.25 0.04 260;
+    --sidebar-primary: 0.45 0.15 260;
+    --sidebar-primary-foreground: 0.95 0.01 270;
+    --sidebar-accent: 0.62 0.21 180;
+    --sidebar-accent-foreground: 0.12 0.02 270;
+    --sidebar-border: 0.92 0.02 270;
+    --sidebar-ring: 0.62 0.21 180;
+  }
+
+  .dark {
+    --background: 0.12 0.02 260;
+    --foreground: 0.92 0.02 270;
+    --card: 0.18 0.08 260;
+    --card-foreground: 0.88 0.03 270;
+    --popover: 0.22 0.08 260;
+    --popover-foreground: 0.88 0.03 270;
+
+    --primary: 0.65 0.18 180;
+    --primary-foreground: 0.12 0.02 260;
+
+    --secondary: 0.2 0.06 260;
+    --secondary-foreground: 0.82 0.03 270;
+    --muted: 0.2 0.06 260;
+    --muted-foreground: 0.58 0.04 270;
+
+    --accent: 0.68 0.21 180;
+    --accent-foreground: 0.12 0.02 260;
+
+    --destructive: 0.62 0.18 25;
+    --destructive-foreground: 0.95 0.01 270;
+
+    --border: 0.25 0.08 260;
+    --input: 0.25 0.08 260;
+    --ring: 0.68 0.21 180;
+
+    --chart-1: 0.68 0.21 180;
+    --chart-2: 0.62 0.18 25;
+    --chart-3: 0.72 0.18 122;
+    --chart-4: 0.65 0.18 260;
+    --chart-5: 0.75 0.18 50;
+
+    --sidebar: 0.18 0.08 260;
+    --sidebar-foreground: 0.88 0.03 270;
+    --sidebar-primary: 0.65 0.18 180;
+    --sidebar-primary-foreground: 0.12 0.02 260;
+    --sidebar-accent: 0.2 0.06 260;
+    --sidebar-accent-foreground: 0.82 0.03 270;
+    --sidebar-border: 0.25 0.08 260;
+    --sidebar-ring: 0.68 0.21 180;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Glass card — raw CSS to avoid @apply opacity variant issues */
+  .glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: oklch(var(--card) / 0.5);
+    border: 1px solid oklch(var(--border) / 0.3);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.12), inset 0 1px 2px 0
+      rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .glass-hover:hover {
+    background-color: oklch(var(--card) / 0.7);
+    box-shadow: 0 16px 48px 0 rgba(31, 38, 135, 0.16), inset 0 1px 3px 0
+      rgba(255, 255, 255, 0.1);
+  }
+
+  /* Priority color utilities — use raw color values */
+  .priority-high {
+    background-color: oklch(var(--destructive) / 0.12);
+    color: oklch(var(--destructive));
+    border: 1px solid oklch(var(--destructive) / 0.25);
+  }
+  .priority-medium {
+    background-color: oklch(var(--chart-5) / 0.12);
+    color: oklch(var(--chart-5));
+    border: 1px solid oklch(var(--chart-5) / 0.25);
+  }
+  .priority-low {
+    background-color: oklch(var(--chart-3) / 0.12);
+    color: oklch(var(--chart-3));
+    border: 1px solid oklch(var(--chart-3) / 0.25);
+  }
+
+  /* Shadow subtle for header */
+  .shadow-subtle {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  }
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}

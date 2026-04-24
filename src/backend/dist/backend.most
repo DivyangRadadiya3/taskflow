@@ -1,0 +1,33 @@
+// Version: 1.0.0
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Priority__827778088 = {#high; #low; #medium};
+type Subtask__559488670 = {completed : Bool; id : Nat; title : Text};
+type Todo__736280527 =
+  {
+    category : ?Text;
+    completed : Bool;
+    createdAt : Int;
+    description : Text;
+    dueDate : ?Int;
+    id : Nat;
+    priority : Priority__827778088;
+    sortOrder : Nat;
+    subtasks : [Subtask__559488670];
+    title : Text
+  };
+type UserPreferences__147330232 = {darkMode : Bool};
+actor {
+  stable state :
+    {
+      var nextSubtaskId : Nat;
+      var nextTodoId : Nat;
+      var preferences : UserPreferences__147330232
+    };
+  stable todos :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Todo__736280527]];
+      var elementIndex : Nat__490723111
+    }
+};
